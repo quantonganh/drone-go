@@ -35,6 +35,10 @@ type Client interface {
 	// access in the host system.
 	RepoList() ([]*Repo, error)
 
+	// RepoListSync returns a list of all repositories to which the user has explicit
+	// access in the host system after syncing.
+	RepoListSync() ([]*Repo, error)
+
 	// RepoPost activates a repository.
 	RepoPost(string, string) (*Repo, error)
 

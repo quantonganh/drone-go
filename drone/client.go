@@ -174,6 +174,15 @@ func (c *client) RepoList() ([]*Repo, error) {
 	return out, err
 }
 
+// RepoListSync returns a list of all repositories to which
+// the user has explicit access in the host system after syncing.
+func (c *client) RepoListSync() ([]*Repo, error) {
+	var out []*Repo
+	uri := fmt.Sprintf(pathRepos, c.addr)
+	err := c.post(uri, nil, &out)
+	return out, err
+}
+
 // RepoPost activates a repository.
 func (c *client) RepoPost(owner string, name string) (*Repo, error) {
 	out := new(Repo)
